@@ -1,0 +1,35 @@
+[package]
+name = "hrtf_spatial_audio"
+version = "0.1.0"
+edition = "2021"
+authors = ["ph3nac <ph3nac@gmail.com>"]
+license = "GPL-3.0-or-later"
+homepage = "ph3nac.com"
+description = "hrtf based spatial effect"
+
+[workspace]
+members = ["xtask"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# Remove the `assert_process_allocs` feature to allow allocations on the audio
+# thread in debug builds.
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", features = ["assert_process_allocs"] }
+# Uncomment the below line to disable the on-by-default VST3 feature to remove
+# the GPL compatibility requirement
+# nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", default-features = false, features = ["assert_process_allocs"] }
+sofar = "0.2"
+realfft = "3.0"
+hound = "3.4"
+hrtf = "0.8"
+rustfft="6.0"
+[profile.release]
+lto = "thin"
+strip = "symbols"
+
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = "none"
