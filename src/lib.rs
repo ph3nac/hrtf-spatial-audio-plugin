@@ -1,11 +1,13 @@
 use nih_plug::prelude::*;
 use std::sync::Arc;
 
+mod editor;
+
 // This is a shortened version of the gain example with most comments removed, check out
 // https://github.com/robbert-vdh/nih-plug/blob/master/plugins/examples/gain/src/lib.rs to get
 // started
 
-struct HrtfSpatialAudio {
+pub struct HrtfSpatialAudio {
     params: Arc<HrtfSpatialAudioParams>,
 }
 
@@ -132,6 +134,9 @@ impl Plugin for HrtfSpatialAudio {
         }
 
         ProcessStatus::Normal
+    }
+    fn editor(&mut self, async_executor: AsyncExecutor<Self>) -> Option<Box<dyn Editor>> {
+        editor::create(self.params.clone()) 
     }
 }
 
