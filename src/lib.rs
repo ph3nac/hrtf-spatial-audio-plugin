@@ -135,7 +135,7 @@ impl Plugin for HrtfSpatialAudio {
 
         ProcessStatus::Normal
     }
-    fn editor(&mut self, async_executor: AsyncExecutor<Self>) -> Option<Box<dyn Editor>> {
+    fn editor(&mut self, _async_executor: AsyncExecutor<Self>) -> Option<Box<dyn Editor>> {
         editor::create(self.params.clone()) 
     }
 }
