@@ -7,8 +7,93 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Debug",
-      "program": "${workspaceFolder}/<executable file>",
+      "name": "Debug executable 'xtask'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=xtask",
+          "--package=xtask"
+        ],
+        "filter": {
+          "name": "xtask",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'xtask'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=xtask",
+          "--package=xtask"
+        ],
+        "filter": {
+          "name": "xtask",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'hrtf_spatial_audio'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--lib",
+          "--package=hrtf_spatial_audio"
+        ],
+        "filter": {
+          "name": "hrtf_spatial_audio",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      //TODO JACKを起動しておく必要がある
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'hrtf_spatial_audio'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=hrtf_spatial_audio",
+          "--package=hrtf_spatial_audio",
+        ],
+        "filter": {
+          "name": "hrtf_spatial_audio",
+          "kind": "bin"
+        }
+      },
+      "cwd": "${workspaceFolder}",
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'hrtf_spatial_audio'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=hrtf_spatial_audio",
+          "--package=hrtf_spatial_audio"
+        ],
+        "filter": {
+          "name": "hrtf_spatial_audio",
+          "kind": "bin"
+        }
+      },
       "args": [],
       "cwd": "${workspaceFolder}"
     }
